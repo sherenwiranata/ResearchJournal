@@ -13,31 +13,111 @@
         }
     @font-face { 
     font-family: 'helv'; 
-    src: url('HelveticaNowDisplay.otf');
+    src: url('./Imbue-VariableFont_opsz\,wght.ttf');
     } 
     @font-face {
         font-family: 'helvAlt';
         font-feature-settings: "aalt"; 
-        src: url('HelveticaNowDisplay.otf');
+        src: url('./Imbue-VariableFont_opsz\,wght.ttf');
         font-feature-settings: "ss04";
         unicode-range: U+0052,U+0052 ;}
-    .cover {
-        page: cover;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://source.unsplash.com/random/1600x900') no-repeat center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        }
+
+/**************************** styling for cover page ***********************/
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-page {
+    padding: 4em 6em;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #F8F6F3;
+}
+
+.cover-page .right {
+    color:  #2b2b2b;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    align-items: center;
+}
+
+.cover-title {
+    font-size: 10em;
+    line-height: 0.8;
+    font-weight: bold;
+    font-family: helv;
+    margin-bottom: 0em;
+    text-transform: none;
+}
+
+.cover-subtitle {
+    font-size: 2em;
+    font-family: helv;
+    margin-bottom: 0.2em;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.cover-list {
+    font-size: 1.4em;
+    line-height: 1em;
+    font-family: helv;
+    color: #2b2b2b;
+}
+
+.cover-list li {
+    border-top: 1px solid #2b2b2b;
+    padding: 0.5em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cover-caption a {
+    color: #F8F6F3;
+    background-color: #2b2b2b;
+    font-size: 0.5em;
+    padding: 4px 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1em;
+}
+
+.cover-page .parent,
+.cover-page .right {
+    max-width: none;
+    width: 100%;
+    padding: 0;
+}
+
         body {
             /* display: flex; */
+            background-color: #F8F6F3;
             height: 100vh;
             font-weight: 100;
             font-family: helv, helvAlt, Arial, sans-serif;
-            font-size:14px;
+            font-size:15px;
             font-feature-settings: "ss04";
             font-weight: lighter;
+            color: #2b2b2b;
         }
 
         section {
@@ -91,21 +171,28 @@
             width:auto;
         }
 
-        .caption {
-            position: absolute;
-            bottom: 4em;
-            /* adjust as needed */
-            left: 2em;
-            width:calc(100% - 4em - 1em); 
-            /* adjust as needed */
-            color: black;
-            /* adjust as needed */
-            font-size: 1em;
-            line-height: 1.0em;
-            /* adjust as needed */
-            background-color: white;
-            padding: 2px 5px;
+        .cover-caption a {
+    color: white;
+    background-color: #2b2b2b;
+    font-size: 1em;
+    padding: 4px 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1em;
         }
+
+        .caption {
+    position: absolute;
+    bottom: 4em;
+    left: 2em;
+    width: calc(100% - 4em - 1em);
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.0em;
+    font-weight: light;
+    background-color: #2b2b2b;
+    padding: 2px 5px;
+}
 
         .right {
             /* background: #f0f0f0; */
@@ -114,19 +201,19 @@
         }
 
         h1 {
-            font-size: 6em;
-            font-weight: lighter;
+            font-size: 9em;
+            font-weight: bold;
             text-transform: uppercase;
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 0;
             width: 100%;
             line-height:0.9em;
         }
         h2 {
             text-align:left;
             text-transform: uppercase;
-            font-weight: bold;
-            font-size: 1em;
+            font-weight: normal;
+            font-size: 3em;
             width: 100%;
         }
         h2::before{
@@ -138,12 +225,14 @@
         }
         p {
             margin-bottom: 20px;
+            font-size: 1.45em;
         }
 
         a {
             color: #333;
             text-decoration: none;
-            font-size: 0.8em;
+            font-size: 1.5em;
+            font-style: italic;
             width:100%;
             text-align: left;
             word-wrap: break-word;
@@ -163,67 +252,100 @@
             }
         }
 
-    @media print {
-        @page {
-            size: A4 landscape;
-            margin:1cm;
-            /* marks: crop cross;
-            bleed: 5mm; */
-            @bottom-center {
-    content: counter(page);
-  }
-         }
-         @page cover {
-  margin: 0; /* Use a full size page */
-
-  /* Remove page numbers for the cover */
-  @bottom-center {
-    content: none;
-  }
-}
-        @page :left {
-            margin-left: 1cm;
-        }
-        
-        @page :right {
-            margin-right: 1cm;
-        }
-        body {
-        width: 297mm;
-        height: 210mm;
-        margin: 0;
-        padding: 0;
-        page-break-after: always;  
-        font-size: 10pt;}
-        em {
-        text-align: left;
-        }
-        section {
-            min-height: calc(100% - 2cm);
-            height: 100vh;
-            display: flex;
-            page-break-inside: avoid;
-            page-break-after: always !important;
-        }
-        h1 {
-        font-size: 5em;
-        line-height: 0.8em;
-        }
-        h2 {
-        font-size: 1.5em;
-        }
-        div {
-        /* max-width:50%; */
-        }
-        p {
-        font-size: 0.8em;
-        }
-        em{
-            font-size: 10pt;
-            line-height: 3em;
-            width: 100%;
-        }
+        @media print {
+    /* Reset print styles to match screen styles exactly */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
+
+    body, html {
+        width: 100vw !important;
+        height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: inherit !important;
+        background: #F8F6F3 !important;
+        overflow: visible !important;
+    }
+
+    section {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+    }
+
+    .cover-page {
+        height: 100vh !important;
+        width: 100vw !important;
+        padding: 4em 6em !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        background-color: #F8F6F3 !important;
+    }
+
+    .cover-title {
+        font-size: 8em !important;
+        line-height: 0.8 !important;
+        font-weight: bold !important;
+        font-family: helv !important;
+    }
+
+    .cover-subtitle {
+        font-size: 1em !important;
+        font-family: helv !important;
+        text-transform: uppercase !important;
+        font-weight: normal !important;
+    }
+
+    .cover-list {
+    font-size: 1em !important; /* was 1.4em */
+}
+
+    .cover-list li {
+    border-top: 0.5px solid #2b2b2b !important;
+    padding: 0.5em 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    /* REMOVE this line ↓ */
+    /* page-break-inside: avoid !important; */
+}
+
+    h1 {
+        font-size: 7em !important;
+        font-weight: bold !important;
+        line-height: 0.9em !important;
+        text-transform: uppercase !important;
+        margin-bottom: 0 !important;
+    }
+
+    h2 {
+        font-size: 3em !important;
+        text-transform: uppercase !important;
+        font-weight: normal !important;
+    }
+
+    p, em, a {
+        font-size: inherit !important;
+    }
+
+    img, .topdiv, .bottomdiv {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    @page {
+        size: A4 landscape;
+        margin: 0;
+    }
+}
+
     caption_url {
         font-size: 0.8em;
         color: #333;
@@ -239,26 +361,31 @@
 
 <body> 
     <!-- THIS SECTION IS YOUR COVER PAGE -->
-    <section style="background-image: url(jagged_simple.jpg);">
-        <div class="parent" >
-            <div class="">
-                
-            <div class="caption">
-            
-                <a class="caption_url" href="tofill">TO FILL END</a></div>
+    <section class="cover-page">
+        <div class="right">
+            <div>
+                <h1 class="cover-title">
+                    INTERACTIVE MEDIA <br>RESEARCH JOURNAL, 2025
+                </h1>
+                <h2 class="cover-subtitle">
+                    Sheren Wiranta #1461130 | GDES30008
+                </h2>
+                <ol class="cover-list">
+                    <li>Alice in Wonderland</li>
+                    <li>Camille Utterback</li>
+                    <li>Dan Shiffman</li>
+                    <li>Pacman</li>
+                    <li>Niccolo Miranda</li>
+                    <li>Ran Zhou</li>
+                    <li>Team Cherry</li>
+                    <li>Viber Thio & Shiyu Chen</li>
+                    <li>Yotam Mann</li>
+                    <li>Yuri Suzuki</li>
+                </ol>
             </div>
-            </div>
-        <div class="right" style="background: none;color:white">
-            <div background-color: white;>
-            <h1 style="line-height: 0.9;font-size: 4em;">INTERACTIVE ME DIA RESEARCH J OURNAL, 2025 {WWWAYPOSTS}</h1>
-            <h2>Karen ann Donnachie # 1234567890 | GDES30008 Class 2</h2>
-            <ol>
-                <li>Vera Molnar</li>
-                <li>Lauren Lee McCarthy</li>
-            </ol></p>
-        </div>
         </div>
     </section>
+    
     <script>
         /* THIS SCRIPT IS LOADED VIA CDN AND ESSENTIALLY READS THE .csv FILE ROW BY ROW 
         TO GET THE VARIOUS `COMPONENTS` OF YOUR `JOURNAL` ONE `ENTRY` PER SECTION */
